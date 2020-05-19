@@ -1,1 +1,91 @@
-
+#include <iostream>
+using namespace std;
+class Family {
+  
+    
+  public:
+    int age;
+    string name;
+    string Top3Hobbies[3];
+    bool isFriend = false;
+    Family(string GetName = "John", int GetAge = 20) {
+      name = GetName;
+      age = GetAge;
+    }
+    void Hobbies() {
+      if (!isFriend) cout << "Enter your top 3 hobbies: ";
+      else cout << "Enter his or her top 3 hobbies: ";
+      for (int i = 0; i < 3; i++) {
+        cin >> Top3Hobbies[i];
+      }
+    }
+    void IntroduceSelf() {
+      cout << "Hi, I'm " << name << " and am " << age << " years old. My top three hobbies are: ";
+      for (int i = 0; i < 3; i++) {
+        cout << Top3Hobbies[i] << " ";
+      }
+      cout << endl;
+      
+    }
+};
+class Friends: public Family {
+  private:
+    Family Closest3Friends[3];
+  public:
+    Friends() {
+      cout << "If you are a family member who hasn't yet input his or her data, please come forward now. \n";
+      int getage;
+      string getname;
+      cout << "Enter your name: ";
+      cin >> getname;
+      cout << "Enter your age: ";
+      cin >> getage;
+      age = getage;
+      name = getname;
+      Hobbies();
+      DeclareFriends();
+    }
+    void DeclareFriends() {
+      cout << "Time to introduce your closest 3 friends! \n";
+      for (int i = 0; i < 3; i++) {
+        string friendname;
+        int friendage;
+        cout << "Friend " << i + 1 << ": " << endl;
+        cout << "Enter name: ";
+        cin >> friendname;
+        cout << "Enter age: ";
+        cin >> friendage;
+        Closest3Friends[i] = Family(friendname, friendage);
+        Family::isFriend = true;
+        Closest3Friends[i].Hobbies();
+      }
+    }
+    void IntroduceFriends() {
+      for (int i = 0; i < 3; i++) {
+        cout << Closest3Friends[i].name << " is " << Closest3Friends[i].age << " years old. ";
+        cout << "His hobbies are: ";
+        for (int i = 0; i < 3; i++) {
+          cout << Closest3Friends[i].Top3Hobbies[i] << " ";
+        }
+        cout << endl;
+      }
+    }
+};
+void introducemember() {
+  
+  
+}
+int main() {
+  cout << "How many family members do you have? ";
+  int membernum;
+  cin >> membernum;
+  Friends family[membernum];
+  cout << "All right, here's what we have stored in our database: " << endl;
+  for (int i = 0; i < membernum; i++) {
+    family[i].IntroduceSelf();
+    family[i].IntroduceFriends();
+  }
+  
+  
+  return 0;
+}
