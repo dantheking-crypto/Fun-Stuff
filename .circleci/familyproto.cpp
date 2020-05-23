@@ -2,15 +2,37 @@
 using namespace std;
 class Family {
   
-    
-  public:
+  private:
     int age;
     string name;
     string Top3Hobbies[3];
-    bool isFriend = false;
+    bool isFriend = false;  
+  public:
+    
     Family(string GetName = "John", int GetAge = 20) {
       name = GetName;
       age = GetAge;
+    }
+    int getAge() {
+      return age;
+    }
+    void changeAge(int newage) {
+      age = newage;
+    }
+    string getName() {
+      return name;
+    }
+    void changeName(string newname) {
+      name = newname;
+    }
+    string getHobby(int index) {
+      return Top3Hobbies[index];
+    }
+    bool friendOrNot() {
+      return isFriend;
+    }
+    void changeFriend(bool change) {
+      isFriend = change;
     }
     void Hobbies() {
       if (isFriend) cout << "Enter his or her top 3 hobbies: ";
@@ -33,15 +55,15 @@ class Friends: public Family {
     Family Closest3Friends[3];
   public:
     Friends() {
+      cout << "If you are a family member who hasn't entered his or her data yet, please come to the screen. \n";
       int getage;
       string getname;
       cout << "Enter your name: ";
       cin >> getname;
       cout << "Enter your age: ";
       cin >> getage;
-      
-      age = getage;
-      name = getname;
+      changeAge(getage);
+      changeName(getname);
       Hobbies();
       IntroduceSelf();
       DeclareFriends();
@@ -58,16 +80,16 @@ class Friends: public Family {
         cout << "Enter age: ";
         cin >> friendage;
         Closest3Friends[i] = Family(friendname, friendage);
-        Closest3Friends[i].isFriend = true;
+        Closest3Friends[i].changeFriend(true);
         Closest3Friends[i].Hobbies();
       }
     }
     void IntroduceFriends() {
       for (int i = 0; i < 3; i++) {
-        cout << Closest3Friends[i].name << " is " << Closest3Friends[i].age << " years old." << endl;
+        cout << Closest3Friends[i].getName() << " is " << Closest3Friends[i].getAge() << " years old." << endl;
         cout << "His top 3 hobbies are: ";
         for (int j = 0; j < 3; j++) {
-            cout << Closest3Friends[i].Top3Hobbies[j] << " ";
+            cout << Closest3Friends[i].getHobby(i) << " ";
         }
         cout << endl;
       }
