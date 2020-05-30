@@ -1,16 +1,15 @@
 ## Here are the codes!
 # The following code uses classes to store information about family members:
+```
 #include <iostream>
 using namespace std;
 class Family {
-  
   private:
     int age;
     string name;
     string Top3Hobbies[3];
     bool isFriend = false;  
   public:
-    
     Family(string GetName = "John", int GetAge = 20) {
       name = GetName;
       age = GetAge;
@@ -107,3 +106,4 @@ int main() {
   
   return 0;
 }
+```
