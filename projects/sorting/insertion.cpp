@@ -5,7 +5,7 @@ inline void swap (int& a, int& b) {
   a = b;
   b = temp;
 }
-void selectionsort (int arr[], int length) {
+void insertionsort (int arr[], int length) {
   for (int i = 1; i < length; i++) {
     int current = i;
     while (current >= 0) {
@@ -22,7 +22,7 @@ int main() {
   for (int i = 0; i < length; i++) {
     cin >> arr[i];
   }
-  selectionsort(arr, length);
+  insertionsort(arr, length);
   for (int i = 0; i < length; i++) {
     cout << arr[i] << " ";
   }
