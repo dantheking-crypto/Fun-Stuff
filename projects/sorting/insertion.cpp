@@ -8,7 +8,7 @@ inline void swap (int& a, int& b) {
 void insertionsort (int arr[], int length) {
   for (int i = 1; i < length; i++) {
     int current = i;
-    while (current >= 0) {
+    while (current > 0) {
       if (arr[current] > arr[current - 1]) break;
       swap (arr[current], arr[current - 1]);
       current--;
