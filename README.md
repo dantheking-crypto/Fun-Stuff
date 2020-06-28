@@ -5,3 +5,4 @@ Bubble sort
 Selection sort  
 Heap sort  
 Merge sort  
+Insertion sort
